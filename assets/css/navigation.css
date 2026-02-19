@@ -1,0 +1,342 @@
+/*
+ * Navigation styles for Starter Theme
+ * Mobile menu, keyboard support, and responsive navigation
+ */
+
+/* ===== NAVIGATION BASE ===== */
+
+.wp-block-navigation {
+	position: relative;
+}
+
+.wp-block-navigation__responsive-container {
+	position: static;
+}
+
+.wp-block-navigation-item {
+	position: relative;
+}
+
+.wp-block-navigation-item a {
+	padding: var(--wp--preset--spacing--sm) var(--wp--preset--spacing--md);
+	border-radius: var(--wp--custom--border-radius--default);
+	transition: background-color var(--wp--custom--transition--default);
+	text-decoration: none;
+	display: block;
+}
+
+.wp-block-navigation-item a:hover,
+.wp-block-navigation-item a:focus {
+	background-color: var(--wp--preset--color--surface);
+	color: var(--wp--preset--color--primary);
+}
+
+.wp-block-navigation-item.current-menu-item a,
+.wp-block-navigation-item.current-menu-parent a {
+	background-color: var(--wp--preset--color--primary);
+	color: var(--wp--preset--color--background);
+}
+
+/* ===== DROPDOWN SUBMENUS ===== */
+
+.wp-block-navigation__submenu-container {
+	background-color: var(--wp--preset--color--background);
+	border: 1px solid var(--wp--preset--color--border);
+	border-radius: var(--wp--custom--border-radius--default);
+	box-shadow: var(--wp--custom--shadow--lg);
+	min-width: 200px;
+	padding: var(--wp--preset--spacing--sm);
+	position: absolute;
+	top: 100%;
+	left: 0;
+	z-index: 1000;
+	
+	/* Hidden by default */
+	opacity: 0;
+	visibility: hidden;
+	transform: translateY(-10px);
+	transition: all var(--wp--custom--transition--default);
+}
+
+/* Show dropdown on hover and focus */
+.wp-block-navigation-item:hover > .wp-block-navigation__submenu-container,
+.wp-block-navigation-item:focus-within > .wp-block-navigation__submenu-container {
+	opacity: 1;
+	visibility: visible;
+	transform: translateY(0);
+}
+
+.wp-block-navigation__submenu-container .wp-block-navigation-item {
+	display: block;
+	width: 100%;
+}
+
+.wp-block-navigation__submenu-container .wp-block-navigation-item a {
+	padding: var(--wp--preset--spacing--xs) var(--wp--preset--spacing--sm);
+	margin-bottom: var(--wp--preset--spacing--xs);
+}
+
+.wp-block-navigation__submenu-container .wp-block-navigation-item:last-child a {
+	margin-bottom: 0;
+}
+
+/* ===== MOBILE NAVIGATION ===== */
+
+/* Mobile menu toggle button */
+.wp-block-navigation__responsive-container-open {
+	background: none;
+	border: 2px solid var(--wp--preset--color--border);
+	border-radius: var(--wp--custom--border-radius--default);
+	color: var(--wp--preset--color--text);
+	cursor: pointer;
+	display: none;
+	font-size: var(--wp--preset--font-size--medium);
+	padding: var(--wp--preset--spacing--sm);
+	transition: all var(--wp--custom--transition--default);
+	z-index: 1001;
+}
+
+.wp-block-navigation__responsive-container-open:hover,
+.wp-block-navigation__responsive-container-open:focus {
+	background-color: var(--wp--preset--color--primary);
+	border-color: var(--wp--preset--color--primary);
+	color: var(--wp--preset--color--background);
+	outline: 2px solid var(--wp--preset--color--accent);
+	outline-offset: 2px;
+}
+
+.wp-block-navigation__responsive-container-open svg {
+	width: 24px;
+	height: 24px;
+	display: block;
+}
+
+/* Mobile menu container */
+.wp-block-navigation__responsive-container {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+	background-color: var(--wp--preset--color--background);
+	z-index: 999;
+	
+	/* Hidden by default */
+	transform: translateX(-100%);
+	transition: transform var(--wp--custom--transition--default);
+}
+
+.wp-block-navigation__responsive-container.is-menu-open {
+	transform: translateX(0);
+}
+
+/* Mobile menu close button */
+.wp-block-navigation__responsive-container-close {
+	background: none;
+	border: 2px solid var(--wp--preset--color--border);
+	border-radius: var(--wp--custom--border-radius--default);
+	color: var(--wp--preset--color--text);
+	cursor: pointer;
+	font-size: var(--wp--preset--font-size--medium);
+	padding: var(--wp--preset--spacing--sm);
+	position: absolute;
+	top: var(--wp--preset--spacing--md);
+	right: var(--wp--preset--spacing--md);
+	transition: all var(--wp--custom--transition--default);
+}
+
+.wp-block-navigation__responsive-container-close:hover,
+.wp-block-navigation__responsive-container-close:focus {
+	background-color: var(--wp--preset--color--primary);
+	border-color: var(--wp--preset--color--primary);
+	color: var(--wp--preset--color--background);
+	outline: 2px solid var(--wp--preset--color--accent);
+	outline-offset: 2px;
+}
+
+.wp-block-navigation__responsive-container-close svg {
+	width: 24px;
+	height: 24px;
+	display: block;
+}
+
+/* Mobile menu content */
+.wp-block-navigation__responsive-container-content {
+	padding: var(--wp--preset--spacing--3xl) var(--wp--preset--spacing--lg);
+	height: 100%;
+	overflow-y: auto;
+}
+
+.wp-block-navigation__responsive-container .wp-block-navigation__container {
+	display: flex;
+	flex-direction: column;
+	gap: 0;
+}
+
+.wp-block-navigation__responsive-container .wp-block-navigation-item {
+	border-bottom: 1px solid var(--wp--preset--color--border);
+}
+
+.wp-block-navigation__responsive-container .wp-block-navigation-item:last-child {
+	border-bottom: none;
+}
+
+.wp-block-navigation__responsive-container .wp-block-navigation-item a {
+	padding: var(--wp--preset--spacing--md);
+	font-size: var(--wp--preset--font-size--large);
+	font-weight: 500;
+	border-radius: 0;
+}
+
+/* Mobile submenus */
+.wp-block-navigation__responsive-container .wp-block-navigation__submenu-container {
+	position: static;
+	opacity: 1;
+	visibility: visible;
+	transform: none;
+	background: var(--wp--preset--color--surface);
+	border: none;
+	border-radius: 0;
+	box-shadow: none;
+	margin-top: 0;
+	padding-left: var(--wp--preset--spacing--lg);
+}
+
+.wp-block-navigation__responsive-container .wp-block-navigation__submenu-container .wp-block-navigation-item a {
+	font-size: var(--wp--preset--font-size--medium);
+	padding-left: var(--wp--preset--spacing--lg);
+}
+
+/* ===== RESPONSIVE BREAKPOINTS ===== */
+
+@media (max-width: 782px) {
+	/* Show mobile menu button */
+	.wp-block-navigation__responsive-container-open {
+		display: block;
+	}
+	
+	/* Hide desktop navigation */
+	.wp-block-navigation:not(.is-vertical) .wp-block-navigation__container {
+		display: none;
+	}
+	
+	.wp-block-navigation.is-vertical .wp-block-navigation__container {
+		display: flex;
+	}
+}
+
+@media (min-width: 783px) {
+	/* Hide mobile menu elements on desktop */
+	.wp-block-navigation__responsive-container-open,
+	.wp-block-navigation__responsive-container-close {
+		display: none;
+	}
+	
+	.wp-block-navigation__responsive-container {
+		position: static;
+		transform: none;
+		width: auto;
+		height: auto;
+		background: none;
+	}
+	
+	.wp-block-navigation__responsive-container-content {
+		padding: 0;
+		height: auto;
+		overflow: visible;
+	}
+	
+	/* Reset mobile menu styles */
+	.wp-block-navigation__responsive-container .wp-block-navigation__container {
+		flex-direction: row;
+		gap: var(--wp--preset--spacing--lg);
+	}
+	
+	.wp-block-navigation__responsive-container .wp-block-navigation-item {
+		border-bottom: none;
+	}
+	
+	.wp-block-navigation__responsive-container .wp-block-navigation-item a {
+		padding: var(--wp--preset--spacing--sm) var(--wp--preset--spacing--md);
+		font-size: var(--wp--preset--font-size--medium);
+	}
+}
+
+/* ===== KEYBOARD NAVIGATION ===== */
+
+/* Focus trap for mobile menu */
+.wp-block-navigation__responsive-container.is-menu-open {
+	/* Prevent scrolling on body when menu is open */
+	overflow: hidden;
+}
+
+/* Enhanced focus styles */
+.wp-block-navigation-item a:focus {
+	outline: 3px solid var(--wp--preset--color--primary);
+	outline-offset: 2px;
+	z-index: 1;
+}
+
+/* Skip to submenu functionality */
+.wp-block-navigation-item[aria-expanded="true"] > .wp-block-navigation__submenu-container {
+	opacity: 1;
+	visibility: visible;
+	transform: translateY(0);
+}
+
+/* ===== ACCESSIBILITY ENHANCEMENTS ===== */
+
+/* Screen reader text for mobile menu */
+.mobile-menu-toggle .screen-reader-text {
+	position: absolute;
+	left: -9999px;
+}
+
+/* ARIA labels */
+.wp-block-navigation[aria-label] {
+	position: relative;
+}
+
+.wp-block-navigation__responsive-container[aria-hidden="true"] {
+	display: none;
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+	.wp-block-navigation-item a {
+		border: 2px solid transparent;
+	}
+	
+	.wp-block-navigation-item a:hover,
+	.wp-block-navigation-item a:focus {
+		border-color: currentColor;
+	}
+	
+	.wp-block-navigation__submenu-container {
+		border-width: 2px;
+	}
+}
+
+/* ===== LOADING STATES ===== */
+
+.wp-block-navigation__loading {
+	opacity: 0.6;
+	pointer-events: none;
+}
+
+/* ===== RTL SUPPORT ===== */
+
+[dir="rtl"] .wp-block-navigation__submenu-container {
+	left: auto;
+	right: 0;
+}
+
+[dir="rtl"] .wp-block-navigation__responsive-container-close {
+	right: auto;
+	left: var(--wp--preset--spacing--md);
+}
+
+[dir="rtl"] .wp-block-navigation__responsive-container .wp-block-navigation__submenu-container .wp-block-navigation-item a {
+	padding-left: var(--wp--preset--spacing--md);
+	padding-right: var(--wp--preset--spacing--lg);
+}
