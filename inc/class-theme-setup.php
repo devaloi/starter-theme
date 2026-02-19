@@ -6,7 +6,6 @@
  * @since 1.0.0
  */
 
-declare(strict_types=1);
 
 namespace Starter_Theme;
 

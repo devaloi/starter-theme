@@ -6,7 +6,6 @@
  * @since 1.0.0
  */
 
-declare(strict_types=1);
 
 namespace Starter_Theme;
 
@@ -124,7 +123,6 @@ class Enqueue {
  * @since 1.0.0
  */
 
-declare(strict_types=1);
 
 namespace Starter_Theme;
 

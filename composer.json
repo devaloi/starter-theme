@@ -1,0 +1,27 @@
+{
+  "name": "starter-theme",
+  "description": "A clean, accessible WordPress block theme with full FSE support",
+  "version": "1.0.0",
+  "license": "GPL-2.0-or-later",
+  "author": "devaloi",
+  "homepage": "https://github.com/devaloi/starter-theme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/devaloi/starter-theme.git"
+  },
+  "require-dev": {
+    "squizlabs/php_codesniffer": "^3.7",
+    "wp-coding-standards/wpcs": "^3.0",
+    "phpunit/phpunit": "^9.5"
+  },
+  "scripts": {
+    "lint": "phpcs --standard=phpcs.xml .",
+    "fix": "phpcbf --standard=phpcs.xml .",
+    "test": "phpunit"
+  },
+  "config": {
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true
+    }
+  }
+}

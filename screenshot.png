@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1200" height="900" fill="#ffffff"/>
+  
+  <!-- Header -->
+  <rect width="1200" height="80" fill="#2563eb"/>
+  <text x="60" y="50" font-family="system-ui, sans-serif" font-size="24" font-weight="600" fill="#ffffff">Starter Theme</text>
+  <text x="1000" y="30" font-family="system-ui, sans-serif" font-size="14" fill="#ffffff">Home</text>
+  <text x="1050" y="30" font-family="system-ui, sans-serif" font-size="14" fill="#ffffff">About</text>
+  <text x="1100" y="30" font-family="system-ui, sans-serif" font-size="14" fill="#ffffff">Blog</text>
+  <text x="1000" y="55" font-family="system-ui, sans-serif" font-size="14" fill="#ffffff">Services</text>
+  <text x="1070" y="55" font-family="system-ui, sans-serif" font-size="14" fill="#ffffff">Contact</text>
+  
+  <!-- Hero Section -->
+  <rect x="0" y="80" width="1200" height="400" fill="#f8fafc"/>
+  <rect x="0" y="80" width="1200" height="400" fill="url(#heroGradient)" opacity="0.7"/>
+  <text x="600" y="200" font-family="ui-serif, serif" font-size="48" font-weight="700" fill="#ffffff" text-anchor="middle">Welcome to Your Website</text>
+  <text x="600" y="250" font-family="system-ui, sans-serif" font-size="20" fill="#ffffff" text-anchor="middle" opacity="0.9">Create something amazing with our modern, accessible theme</text>
+  <rect x="500" y="290" width="120" height="50" rx="8" fill="#f59e0b"/>
+  <text x="560" y="320" font-family="system-ui, sans-serif" font-size="16" font-weight="600" fill="#ffffff" text-anchor="middle">Get Started</text>
+  <rect x="640" y="290" width="120" height="50" rx="8" fill="none" stroke="#ffffff" stroke-width="2"/>
+  <text x="700" y="320" font-family="system-ui, sans-serif" font-size="16" font-weight="600" fill="#ffffff" text-anchor="middle">Learn More</text>
+  
+  <!-- Content Section -->
+  <text x="100" y="560" font-family="ui-serif, serif" font-size="32" font-weight="600" fill="#1f2937">Featured Content</text>
+  
+  <!-- Card 1 -->
+  <rect x="100" y="590" width="320" height="200" rx="12" fill="#f8fafc" stroke="#e5e7eb"/>
+  <rect x="120" y="610" width="280" height="120" rx="8" fill="#e5e7eb"/>
+  <text x="130" y="650" font-family="system-ui, sans-serif" font-size="16" font-weight="600" fill="#1f2937">Block Patterns</text>
+  <text x="130" y="670" font-family="system-ui, sans-serif" font-size="14" fill="#64748b">Pre-built content layouts</text>
+  <text x="130" y="760" font-family="system-ui, sans-serif" font-size="14" fill="#2563eb">Learn more →</text>
+  
+  <!-- Card 2 -->
+  <rect x="440" y="590" width="320" height="200" rx="12" fill="#f8fafc" stroke="#e5e7eb"/>
+  <rect x="460" y="610" width="280" height="120" rx="8" fill="#e5e7eb"/>
+  <text x="470" y="650" font-family="system-ui, sans-serif" font-size="16" font-weight="600" fill="#1f2937">Accessibility</text>
+  <text x="470" y="670" font-family="system-ui, sans-serif" font-size="14" fill="#64748b">WCAG 2.1 AA compliant</text>
+  <text x="470" y="760" font-family="system-ui, sans-serif" font-size="14" fill="#2563eb">Learn more →</text>
+  
+  <!-- Card 3 -->
+  <rect x="780" y="590" width="320" height="200" rx="12" fill="#f8fafc" stroke="#e5e7eb"/>
+  <rect x="800" y="610" width="280" height="120" rx="8" fill="#e5e7eb"/>
+  <text x="810" y="650" font-family="system-ui, sans-serif" font-size="16" font-weight="600" fill="#1f2937">Performance</text>
+  <text x="810" y="670" font-family="system-ui, sans-serif" font-size="14" fill="#64748b">Optimized for speed</text>
+  <text x="810" y="760" font-family="system-ui, sans-serif" font-size="14" fill="#2563eb">Learn more →</text>
+  
+  <!-- Footer -->
+  <rect x="0" y="820" width="1200" height="80" fill="#1f2937"/>
+  <text x="60" y="850" font-family="system-ui, sans-serif" font-size="14" fill="#9ca3af">© 2024 Starter Theme. All rights reserved.</text>
+  <text x="1040" y="840" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">Privacy</text>
+  <text x="1040" y="860" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">Terms</text>
+  
+  <!-- Gradient Definitions -->
+  <defs>
+    <linearGradient id="heroGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2563eb;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1e40af;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+</svg>
