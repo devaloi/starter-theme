@@ -18,6 +18,7 @@
 		<exclude name="Squiz.Commenting.FileComment.SpacingAfterComment" />
 		<exclude name="Squiz.Commenting.FunctionComment.MissingParamComment" />
 		<exclude name="Generic.Commenting.DocComment.MissingShort" />
+		<exclude name="Generic.CodeAnalysis.UnusedFunctionParameter" />
 	</rule>
 
 	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">

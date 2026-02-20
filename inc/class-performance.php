@@ -158,7 +158,7 @@ class Performance {
 			// Remove jQuery Migrate
 			if ( ! wp_script_is( 'jquery', 'done' ) ) {
 				wp_deregister_script( 'jquery' );
-				wp_register_script( 'jquery', includes_url( '/js/jquery/jquery.min.js' ), array(), null, true );
+					wp_register_script( 'jquery', includes_url( '/js/jquery/jquery.min.js' ), array(), STARTER_THEME_VERSION, true );
 			}
 
 			// Remove unnecessary scripts on frontend
