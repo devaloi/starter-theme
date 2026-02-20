@@ -12,15 +12,15 @@ namespace Starter_Theme;
 class Performance {
 
 	public function init(): void {
-		add_action( 'init', [ $this, 'disable_emojis' ] );
-		add_action( 'wp_head', [ $this, 'add_preconnect_links' ], 1 );
-		add_action( 'wp_head', [ $this, 'add_dns_prefetch' ], 1 );
-		add_filter( 'wp_get_attachment_image_attributes', [ $this, 'add_lazy_loading' ], 10, 3 );
-		add_filter( 'the_content', [ $this, 'add_lazy_loading_to_content' ] );
-		add_filter( 'script_loader_tag', [ $this, 'add_async_defer_attributes' ], 10, 3 );
-		add_action( 'wp_enqueue_scripts', [ $this, 'dequeue_unused_scripts' ], 100 );
-		add_action( 'wp_print_styles', [ $this, 'dequeue_unused_styles' ], 100 );
-		add_filter( 'wp_resource_hints', [ $this, 'add_resource_hints' ], 10, 2 );
+		add_action( 'init', array( $this, 'disable_emojis' ) );
+		add_action( 'wp_head', array( $this, 'add_preconnect_links' ), 1 );
+		add_action( 'wp_head', array( $this, 'add_dns_prefetch' ), 1 );
+		add_filter( 'wp_get_attachment_image_attributes', array( $this, 'add_lazy_loading' ), 10, 3 );
+		add_filter( 'the_content', array( $this, 'add_lazy_loading_to_content' ) );
+		add_filter( 'script_loader_tag', array( $this, 'add_async_defer_attributes' ), 10, 3 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'dequeue_unused_scripts' ), 100 );
+		add_action( 'wp_print_styles', array( $this, 'dequeue_unused_styles' ), 100 );
+		add_filter( 'wp_resource_hints', array( $this, 'add_resource_hints' ), 10, 2 );
 	}
 
 	public function disable_emojis(): void {
@@ -34,18 +34,18 @@ class Performance {
 		remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
 
 		// Remove emoji from TinyMCE
-		add_filter( 'tiny_mce_plugins', [ $this, 'disable_emoji_tinymce' ] );
-		add_filter( 'wp_resource_hints', [ $this, 'disable_emoji_dns_prefetch' ], 10, 2 );
+		add_filter( 'tiny_mce_plugins', array( $this, 'disable_emoji_tinymce' ) );
+		add_filter( 'wp_resource_hints', array( $this, 'disable_emoji_dns_prefetch' ), 10, 2 );
 	}
 
 	public function disable_emoji_tinymce( array $plugins ): array {
-		return array_diff( $plugins, [ 'wpemoji' ] );
+		return array_diff( $plugins, array( 'wpemoji' ) );
 	}
 
 	public function disable_emoji_dns_prefetch( array $urls, string $relation_type ): array {
 		if ( 'dns-prefetch' === $relation_type ) {
-			$emoji_svg_url = apply_filters( 'emoji_svg_url', 'https://s.w.org/images/core/emoji/2/svg/' );
-			$urls = array_diff( $urls, [ $emoji_svg_url ] );
+			$emoji_svg_url = apply_filters( 'emoji_svg_url', 'https://s.w.org/images/core/emoji/2/svg/' ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- WP core filter.
+			$urls          = array_diff( $urls, array( $emoji_svg_url ) );
 		}
 
 		return $urls;
@@ -60,12 +60,12 @@ class Performance {
 	}
 
 	public function add_dns_prefetch(): void {
-		$prefetch_domains = [
+		$prefetch_domains = array(
 			'//fonts.googleapis.com',
 			'//fonts.gstatic.com',
 			'//gravatar.com',
 			'//secure.gravatar.com',
-		];
+		);
 
 		foreach ( $prefetch_domains as $domain ) {
 			printf( '<link rel="dns-prefetch" href="%s">' . "\n", esc_url( $domain ) );
@@ -112,7 +112,7 @@ class Performance {
 			'/<img([^>]+?)>/i',
 			function ( array $matches ): string {
 				$img_tag = $matches[0];
-				
+
 				// Skip if already has loading attribute
 				if ( strpos( $img_tag, 'loading=' ) !== false ) {
 					return $img_tag;
@@ -129,17 +129,17 @@ class Performance {
 
 	public function add_async_defer_attributes( string $tag, string $handle, string $src ): string {
 		// Scripts that should be deferred
-		$defer_scripts = [
+		$defer_scripts = array(
 			'starter-theme-navigation',
 			'starter-theme-lazy-load',
 			'comment-reply',
-		];
+		);
 
 		// Scripts that should be async
-		$async_scripts = [
+		$async_scripts = array(
 			'google-analytics',
 			'gtag',
-		];
+		);
 
 		if ( in_array( $handle, $defer_scripts, true ) ) {
 			return str_replace( ' src', ' defer src', $tag );
@@ -158,7 +158,7 @@ class Performance {
 			// Remove jQuery Migrate
 			if ( ! wp_script_is( 'jquery', 'done' ) ) {
 				wp_deregister_script( 'jquery' );
-				wp_register_script( 'jquery', includes_url( '/js/jquery/jquery.min.js' ), [], null, true );
+				wp_register_script( 'jquery', includes_url( '/js/jquery/jquery.min.js' ), array(), null, true );
 			}
 
 			// Remove unnecessary scripts on frontend
@@ -187,10 +187,10 @@ class Performance {
 	public function add_resource_hints( array $urls, string $relation_type ): array {
 		if ( 'prefetch' === $relation_type && get_theme_mod( 'starter_theme_prefetch_links', true ) ) {
 			// Add critical pages to prefetch
-			$prefetch_urls = [
+			$prefetch_urls = array(
 				home_url( '/' ),
 				get_permalink( get_option( 'page_for_posts' ) ),
-			];
+			);
 
 			// Add menu items to prefetch
 			$menu_locations = get_nav_menu_locations();
@@ -248,72 +248,16 @@ class Performance {
 	 */
 	public function optimize_queries(): void {
 		// Remove unnecessary meta queries
-		add_filter( 'pre_get_posts', function( \WP_Query $query ): void {
-			if ( ! is_admin() && $query->is_main_query() ) {
-				// Limit posts per page for performance
-				if ( is_home() || is_archive() ) {
-					$query->set( 'posts_per_page', 12 );
+		add_filter(
+			'pre_get_posts',
+			function ( \WP_Query $query ): void {
+				if ( ! is_admin() && $query->is_main_query() ) {
+					// Limit posts per page for performance
+					if ( is_home() || is_archive() ) {
+						$query->set( 'posts_per_page', 12 );
+					}
 				}
 			}
-		} );
-	}
-}
-/**
- * Performance optimizations: cleanup, lazy loading, prefetch.
- *
- * @package starter-theme
- * @since 1.0.0
- */
-
-
-namespace Starter_Theme;
-
-class Performance {
-
-	public function init(): void {
-		add_action( 'init', [ $this, 'cleanup' ] );
-		add_filter( 'wp_get_attachment_image_attributes', [ $this, 'add_lazy_loading' ], 10, 1 );
-		add_action( 'wp_head', [ $this, 'add_preconnect' ], 2 );
-		add_filter( 'script_loader_tag', [ $this, 'defer_scripts' ], 10, 2 );
-	}
-
-	public function cleanup(): void {
-		remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
-		remove_action( 'wp_print_styles', 'print_emoji_styles' );
-		remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
-		remove_action( 'admin_print_styles', 'print_emoji_styles' );
-		remove_action( 'wp_head', 'wp_oembed_add_discovery_links' );
-		remove_action( 'wp_head', 'wp_oembed_add_host_js' );
-		remove_action( 'wp_head', 'rest_output_link_wp_head' );
-		remove_action( 'wp_head', 'wp_shortlink_wp_head' );
-		remove_action( 'wp_head', 'rsd_link' );
-		remove_action( 'wp_head', 'wlwmanifest_link' );
-		remove_action( 'wp_head', 'wp_generator' );
-	}
-
-	/**
-	 * @param array<string, string> $attr
-	 * @return array<string, string>
-	 */
-	public function add_lazy_loading( array $attr ): array {
-		if ( ! is_admin() && get_theme_mod( 'starter_theme_lazy_loading', true ) ) {
-			$attr['loading'] = 'lazy';
-		}
-		return $attr;
-	}
-
-	public function add_preconnect(): void {
-		if ( get_theme_mod( 'starter_theme_prefetch', true ) ) {
-			echo '<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>' . "\n";
-			echo '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' . "\n";
-		}
-	}
-
-	public function defer_scripts( string $tag, string $handle ): string {
-		$defer_handles = [ 'starter-theme-navigation', 'starter-theme-lazy-load' ];
-		if ( in_array( $handle, $defer_handles, true ) && ! str_contains( $tag, 'defer' ) ) {
-			$tag = str_replace( ' src', ' defer src', $tag );
-		}
-		return $tag;
+		);
 	}
 }

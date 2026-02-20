@@ -5,11 +5,11 @@
  * @package starter-theme
  */
 
-return [
+return array(
 	'title'       => __( 'Hero Section', 'starter-theme' ),
 	'description' => __( 'A large hero section with heading, subtitle, call-to-action buttons and optional background image.', 'starter-theme' ),
-	'categories'  => [ 'starter-theme', 'header', 'call-to-action' ],
-	'keywords'    => [ 'hero', 'banner', 'header', 'cta', 'welcome' ],
+	'categories'  => array( 'starter-theme', 'header', 'call-to-action' ),
+	'keywords'    => array( 'hero', 'banner', 'header', 'cta', 'welcome' ),
 	'content'     => '<!-- wp:cover {"url":"","id":0,"dimRatio":30,"overlayColor":"primary","isUserOverlayColor":true,"minHeight":80,"minHeightUnit":"vh","contentPosition":"center center","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|3xl","bottom":"var:preset|spacing|3xl","left":"var:preset|spacing|md","right":"var:preset|spacing|md"}}}} -->
 <div class="wp-block-cover alignfull" style="padding-top:var(--wp--preset--spacing--3xl);padding-right:var(--wp--preset--spacing--md);padding-bottom:var(--wp--preset--spacing--3xl);padding-left:var(--wp--preset--spacing--md);min-height:80vh"><span aria-hidden="true" class="wp-block-cover__background has-primary-background-color has-background-dim-30 has-background-dim"></span><div class="wp-block-cover__inner-container"><!-- wp:group {"layout":{"type":"constrained","contentSize":"800px"}} -->
 <div class="wp-block-group"><!-- wp:heading {"textAlign":"center","level":1,"fontSize":"xx-large","style":{"spacing":{"margin":{"bottom":"var:preset|spacing|md"}},"typography":{"lineHeight":"1.1"}},"textColor":"background"} -->
@@ -31,4 +31,4 @@ return [
 <!-- /wp:buttons --></div>
 <!-- /wp:group --></div></div>
 <!-- /wp:cover -->',
-];
+);

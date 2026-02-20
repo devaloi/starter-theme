@@ -5,11 +5,11 @@
  * @package starter-theme
  */
 
-return [
+return array(
 	'title'       => __( 'Featured Posts', 'starter-theme' ),
 	'description' => __( 'A 3-column grid of featured posts with thumbnails, excerpts and read more links.', 'starter-theme' ),
-	'categories'  => [ 'starter-theme', 'posts', 'featured' ],
-	'keywords'    => [ 'posts', 'blog', 'featured', 'grid', 'articles' ],
+	'categories'  => array( 'starter-theme', 'posts', 'featured' ),
+	'keywords'    => array( 'posts', 'blog', 'featured', 'grid', 'articles' ),
 	'content'     => '<!-- wp:group {"align":"wide","style":{"spacing":{"padding":{"top":"var:preset|spacing|3xl","bottom":"var:preset|spacing|3xl"}}},"layout":{"type":"constrained"}} -->
 <div class="wp-block-group alignwide" style="padding-top:var(--wp--preset--spacing--3xl);padding-bottom:var(--wp--preset--spacing--3xl)"><!-- wp:heading {"textAlign":"center","fontSize":"x-large","style":{"spacing":{"margin":{"bottom":"var:preset|spacing|xl"}}}} -->
 <h2 class="wp-block-heading has-text-align-center has-x-large-font-size" style="margin-bottom:var(--wp--preset--spacing--xl)">Featured Posts</h2>
@@ -49,4 +49,4 @@ return [
 <!-- /wp:query-no-results --></div>
 <!-- /wp:query --></div>
 <!-- /wp:group -->',
-];
+);

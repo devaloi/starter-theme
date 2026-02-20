@@ -12,9 +12,9 @@ namespace Starter_Theme;
 class Enqueue {
 
 	public function init(): void {
-		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_styles' ] );
-		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
-		add_action( 'enqueue_block_editor_assets', [ $this, 'enqueue_editor_assets' ] );
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
+		add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_editor_assets' ) );
 	}
 
 	public function enqueue_styles(): void {
@@ -22,7 +22,7 @@ class Enqueue {
 		wp_enqueue_style(
 			'starter-theme-global',
 			STARTER_THEME_URI . '/assets/css/global.css',
-			[],
+			array(),
 			STARTER_THEME_VERSION
 		);
 
@@ -30,7 +30,7 @@ class Enqueue {
 		wp_enqueue_style(
 			'starter-theme-accessibility',
 			STARTER_THEME_URI . '/assets/css/accessibility.css',
-			[ 'starter-theme-global' ],
+			array( 'starter-theme-global' ),
 			STARTER_THEME_VERSION
 		);
 
@@ -38,7 +38,7 @@ class Enqueue {
 		wp_enqueue_style(
 			'starter-theme-navigation',
 			STARTER_THEME_URI . '/assets/css/navigation.css',
-			[ 'starter-theme-global' ],
+			array( 'starter-theme-global' ),
 			STARTER_THEME_VERSION
 		);
 
@@ -47,7 +47,7 @@ class Enqueue {
 			wp_enqueue_style(
 				'starter-theme-blocks',
 				STARTER_THEME_URI . '/assets/css/blocks.css',
-				[ 'starter-theme-global' ],
+				array( 'starter-theme-global' ),
 				STARTER_THEME_VERSION
 			);
 		}
@@ -56,7 +56,7 @@ class Enqueue {
 		wp_enqueue_style(
 			'starter-theme-print',
 			STARTER_THEME_URI . '/assets/css/print.css',
-			[ 'starter-theme-global' ],
+			array( 'starter-theme-global' ),
 			STARTER_THEME_VERSION,
 			'print'
 		);
@@ -67,12 +67,12 @@ class Enqueue {
 		wp_enqueue_script(
 			'starter-theme-navigation',
 			STARTER_THEME_URI . '/assets/js/navigation.js',
-			[],
+			array(),
 			STARTER_THEME_VERSION,
-			[
+			array(
 				'strategy'  => 'defer',
 				'in_footer' => true,
-			]
+			)
 		);
 
 		// Lazy loading script (conditional)
@@ -80,12 +80,12 @@ class Enqueue {
 			wp_enqueue_script(
 				'starter-theme-lazy-load',
 				STARTER_THEME_URI . '/assets/js/lazy-load.js',
-				[],
+				array(),
 				STARTER_THEME_VERSION,
-				[
+				array(
 					'strategy'  => 'defer',
 					'in_footer' => true,
-				]
+				)
 			);
 		}
 
@@ -100,7 +100,7 @@ class Enqueue {
 		wp_enqueue_style(
 			'starter-theme-editor',
 			STARTER_THEME_URI . '/assets/css/editor.css',
-			[ 'wp-edit-blocks' ],
+			array( 'wp-edit-blocks' ),
 			STARTER_THEME_VERSION
 		);
 	}
@@ -114,70 +114,5 @@ class Enqueue {
 			return (string) filemtime( $full_path );
 		}
 		return STARTER_THEME_VERSION;
-	}
-}
-/**
- * Asset enqueuing with versioning.
- *
- * @package starter-theme
- * @since 1.0.0
- */
-
-
-namespace Starter_Theme;
-
-class Enqueue {
-
-	public function init(): void {
-		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_styles' ] );
-		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
-	}
-
-	public function enqueue_styles(): void {
-		wp_enqueue_style(
-			'starter-theme-global',
-			STARTER_THEME_URI . '/assets/css/global.css',
-			[],
-			STARTER_THEME_VERSION
-		);
-
-		wp_enqueue_style(
-			'starter-theme-blocks',
-			STARTER_THEME_URI . '/assets/css/blocks.css',
-			[ 'starter-theme-global' ],
-			STARTER_THEME_VERSION
-		);
-
-		wp_enqueue_style(
-			'starter-theme-navigation',
-			STARTER_THEME_URI . '/assets/css/navigation.css',
-			[ 'starter-theme-global' ],
-			STARTER_THEME_VERSION
-		);
-
-		wp_enqueue_style(
-			'starter-theme-accessibility',
-			STARTER_THEME_URI . '/assets/css/accessibility.css',
-			[ 'starter-theme-global' ],
-			STARTER_THEME_VERSION
-		);
-	}
-
-	public function enqueue_scripts(): void {
-		wp_enqueue_script(
-			'starter-theme-navigation',
-			STARTER_THEME_URI . '/assets/js/navigation.js',
-			[],
-			STARTER_THEME_VERSION,
-			[ 'strategy' => 'defer' ]
-		);
-
-		wp_enqueue_script(
-			'starter-theme-lazy-load',
-			STARTER_THEME_URI . '/assets/js/lazy-load.js',
-			[],
-			STARTER_THEME_VERSION,
-			[ 'strategy' => 'defer' ]
-		);
 	}
 }

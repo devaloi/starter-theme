@@ -5,11 +5,11 @@
  * @package starter-theme
  */
 
-return [
+return array(
 	'title'       => __( 'Call to Action', 'starter-theme' ),
 	'description' => __( 'A centered call-to-action section with heading, text and button on colored background.', 'starter-theme' ),
-	'categories'  => [ 'starter-theme', 'call-to-action', 'buttons' ],
-	'keywords'    => [ 'cta', 'call-to-action', 'banner', 'button', 'conversion' ],
+	'categories'  => array( 'starter-theme', 'call-to-action', 'buttons' ),
+	'keywords'    => array( 'cta', 'call-to-action', 'banner', 'button', 'conversion' ),
 	'content'     => '<!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|3xl","bottom":"var:preset|spacing|3xl","left":"var:preset|spacing|lg","right":"var:preset|spacing|lg"},"margin":{"top":"var:preset|spacing|3xl","bottom":"var:preset|spacing|3xl"}}},"backgroundColor":"primary","textColor":"background","layout":{"type":"constrained"}} -->
 <div class="wp-block-group alignfull has-background-color has-primary-background-color has-text-color" style="margin-top:var(--wp--preset--spacing--3xl);margin-bottom:var(--wp--preset--spacing--3xl);padding-top:var(--wp--preset--spacing--3xl);padding-right:var(--wp--preset--spacing--lg);padding-bottom:var(--wp--preset--spacing--3xl);padding-left:var(--wp--preset--spacing--lg)"><!-- wp:group {"layout":{"type":"constrained","contentSize":"600px"}} -->
 <div class="wp-block-group"><!-- wp:heading {"textAlign":"center","fontSize":"x-large","style":{"spacing":{"margin":{"bottom":"var:preset|spacing|md"}}}} -->
@@ -27,4 +27,4 @@ return [
 <!-- /wp:buttons --></div>
 <!-- /wp:group --></div>
 <!-- /wp:group -->',
-];
+);

@@ -5,11 +5,11 @@
  * @package starter-theme
  */
 
-return [
+return array(
 	'title'       => __( 'FAQ Accordion', 'starter-theme' ),
 	'description' => __( 'Frequently asked questions in an accordion layout using details/summary elements.', 'starter-theme' ),
-	'categories'  => [ 'starter-theme', 'text', 'faq' ],
-	'keywords'    => [ 'faq', 'accordion', 'questions', 'answers', 'help' ],
+	'categories'  => array( 'starter-theme', 'text', 'faq' ),
+	'keywords'    => array( 'faq', 'accordion', 'questions', 'answers', 'help' ),
 	'content'     => '<!-- wp:group {"align":"wide","style":{"spacing":{"padding":{"top":"var:preset|spacing|3xl","bottom":"var:preset|spacing|3xl"}}},"layout":{"type":"constrained"}} -->
 <div class="wp-block-group alignwide" style="padding-top:var(--wp--preset--spacing--3xl);padding-bottom:var(--wp--preset--spacing--3xl)"><!-- wp:heading {"textAlign":"center","fontSize":"x-large","style":{"spacing":{"margin":{"bottom":"var:preset|spacing|xl"}}}} -->
 <h2 class="wp-block-heading has-text-align-center has-x-large-font-size" style="margin-bottom:var(--wp--preset--spacing--xl)">Frequently Asked Questions</h2>
@@ -87,4 +87,4 @@ return [
 <!-- /wp:html --></div>
 <!-- /wp:group --></div>
 <!-- /wp:group -->',
-];
+);

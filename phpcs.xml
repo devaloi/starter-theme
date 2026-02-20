@@ -8,9 +8,16 @@
 	<exclude-pattern>/node_modules/*</exclude-pattern>
 	<exclude-pattern>/tests/</exclude-pattern>
 
-	<rule ref="WordPress-Theme">
+	<rule ref="WordPress">
 		<exclude name="WordPress.Files.FileName.InvalidClassFileName" />
 		<exclude name="WordPress.Files.FileName.NotHyphenatedLowercase" />
+		<exclude name="Squiz.Commenting.FunctionComment.Missing" />
+		<exclude name="Squiz.Commenting.ClassComment.Missing" />
+		<exclude name="Squiz.Commenting.FunctionComment.MissingParamTag" />
+		<exclude name="Squiz.Commenting.InlineComment.InvalidEndChar" />
+		<exclude name="Squiz.Commenting.FileComment.SpacingAfterComment" />
+		<exclude name="Squiz.Commenting.FunctionComment.MissingParamComment" />
+		<exclude name="Generic.Commenting.DocComment.MissingShort" />
 	</rule>
 
 	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
