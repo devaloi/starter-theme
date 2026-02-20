@@ -1,5 +1,7 @@
 # Starter Theme
 
+[![CI](https://github.com/devaloi/starter-theme/actions/workflows/ci.yml/badge.svg)](https://github.com/devaloi/starter-theme/actions/workflows/ci.yml)
+
 A clean, accessible WordPress block theme with full FSE support, theme.json design tokens, custom block patterns, responsive CSS custom properties, and WCAG 2.1 AA compliance.
 
 ![Theme Screenshot](screenshot.png)
